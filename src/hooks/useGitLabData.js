@@ -10,6 +10,7 @@ const useGitLabData = () => {
     const [selectedBranch, setSelectedBranch] = useState(null);
     const [gitlabLink, setGitlabLink] = useState('');
     const [hasToken, setHasToken] = useState(false);
+    const [groups, setGroups] = useState([]); // [ { label: 'Group 1', value: 1 }, { label: 'Group 2', value: 2 }
     const [microservices, setMicroservices] = useState([]);
     const [branches, setBranches] = useState([]);
     useEffect(() => {
@@ -17,6 +18,7 @@ const useGitLabData = () => {
         if (storedGitlabLink) {
             setGitlabLink(normalizeGitlabLink(storedGitlabLink));
         }
+        fetchGroups();
     }, []);
 
     useEffect(() => {
@@ -45,12 +47,12 @@ const useGitLabData = () => {
         const headers = { 'PRIVATE-TOKEN': accessToken };
 
         try {
-            const response = await fetch(`${gitlabApi}/groups?search=${inputValue}`, { headers });
+            const response = await fetch(`${gitlabApi}/groups`, { headers });
             const data = await response.json();
             const groups = data.map(group => ({ label: group.name, value: group.id }));
             console.log("🚀 ~ fetchGroups ~ groups:", groups)
 
-            return groups;
+            setGroups(groups);
         } catch (error) {
             console.error('Error fetching groups:', error);
             return [];
@@ -109,7 +111,8 @@ const useGitLabData = () => {
         hasToken, setHasToken,
         fetchGroups, fetchMicroservices, fetchBranches,
         microservices,
-        branches
+        branches,
+        groups,
     };
 };
 
