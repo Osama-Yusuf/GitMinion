@@ -18,30 +18,25 @@ function Inputs({ onGroupSelect, onMicroserviceSelect, onBranchSelect }) {
     groups
   } = useGitLabData();
 
-  useEffect(() => {
-    if (selectedGroup && onGroupSelect) {
-      onGroupSelect(selectedGroup);
-    }
-    if (selectedMicroservice && onMicroserviceSelect) {
-      onMicroserviceSelect(selectedMicroservice);
-    }
-  }, [
-    selectedGroup,
-    selectedMicroservice,
-    onGroupSelect,
-    onMicroserviceSelect,
-  ]);
+    useEffect(() => {
+        if (selectedGroup && onGroupSelect) {
+            onGroupSelect(selectedGroup);
+        }
+        if (selectedMicroservice && onMicroserviceSelect) {
+            onMicroserviceSelect(selectedMicroservice);
+        }
+    }, [
+        selectedGroup,
+        selectedMicroservice,
+        onGroupSelect,
+        onMicroserviceSelect,
+    ]);
 
   return (
     <>
       <div className="mb-4">
         <label>Group:</label>
-        {/* <AsyncSelect
-          cacheOptions
-          defaultOptions
-          loadOptions={fetchGroups}
-          onChange={setSelectedGroup}
-        /> */}
+
         <Select options={groups} onChange={setSelectedGroup} />
       </div>
       <div className="mb-4">
