@@ -1,0 +1,30 @@
+# Node modules
+node_modules
+
+# Build output
+build
+dist
+
+# Git directory
+.git
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Dependency directories
+bower_components
+
+# IDE settings
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+
+# Others
+.DS_Store
+Thumbs.db
