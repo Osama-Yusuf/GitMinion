@@ -46,15 +46,15 @@ GitMinion is now be running on [http://localhost:3000](http://localhost:3000).
 
 ### Home Page
 
-<img src="./screenshots/home.png" alt="Profile Image" style="width: 300px; height: 300px; object-fit: cover;">
+<img src="./screenshots/home.png" alt="Profile Image">
 
 ### Trigger Pipeline Page
 
-<img src="./screenshots/run.png" alt="Profile Image" style="width: 300px; height: 300px; object-fit: cover;">
+<img src="./screenshots/run.png" alt="Profile Image">
 
 ### Generate CI/CD Editor Link Page
 
-<img src="./screenshots/link.png" alt="Profile Image" style="width: 300px; height: 300px; object-fit: cover;">
+<img src="./screenshots/link.png" alt="Profile Image">
 
 ## Contributing
 
