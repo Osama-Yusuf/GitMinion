@@ -10,10 +10,6 @@
 - **Pipeline Configuration**: Generate and open CI/CD pipeline editor pages with pre-filled settings for convenience.
 - **Environment Variables**: Configure and include custom environment variables when triggering pipelines.
 
-## Getting Started
-
-Follow these instructions to get a copy of GitMinion running on your local machine for development and testing purposes.
-
 ## 🔧 How to Install
 
 ### 🐳 Docker
@@ -48,13 +44,16 @@ GitMinion is now be running on [http://localhost:3000](http://localhost:3000).
 
 ## 🖼 Screenshots
 
-Home Page
+### Home Page
+
 <img src="./screenshots/home.png" alt="Profile Image" style="width: 300px; height: 300px; object-fit: cover;">
 
-Trigger Pipeline Page
+### Trigger Pipeline Page
+
 <img src="./screenshots/run.png" alt="Profile Image" style="width: 300px; height: 300px; object-fit: cover;">
 
-Generate CI/CD Editor Link Page
+### Generate CI/CD Editor Link Page
+
 <img src="./screenshots/link.png" alt="Profile Image" style="width: 300px; height: 300px; object-fit: cover;">
 
 ## Contributing
