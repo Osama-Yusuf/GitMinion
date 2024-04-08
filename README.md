@@ -65,5 +65,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - osama9mohamed5@gmail.com
-Project Link: [https://github.com/osama-yusuf/GitMinion](https://github.com/osama-yusuf/GitMinion)
+osama9mohamed5@gmail.com
+[https://github.com/osama-yusuf/GitMinion](https://github.com/osama-yusuf/GitMinion)
