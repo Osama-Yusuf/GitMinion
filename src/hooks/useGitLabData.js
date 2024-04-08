@@ -10,7 +10,8 @@ const useGitLabData = () => {
     const [selectedBranch, setSelectedBranch] = useState(null);
     const [gitlabLink, setGitlabLink] = useState('');
     const [hasToken, setHasToken] = useState(false);
-
+    const [microservices, setMicroservices] = useState([]);
+    const [branches, setBranches] = useState([]);
     useEffect(() => {
         const storedGitlabLink = localStorage.getItem('gitlabLink');
         if (storedGitlabLink) {
@@ -31,12 +32,12 @@ const useGitLabData = () => {
     // create a use effect for selected group
     useEffect(() => {
         if (selectedGroup) {
-            fetchMicroservices('');
+            fetchMicroservices(selectedGroup);
         }
         if (selectedMicroservice) {
             fetchBranches('');
         }
-    })
+    },[ selectedGroup, selectedMicroservice])
 
     const fetchGroups = async (inputValue) => {
         const accessToken = localStorage.getItem('accessToken');
@@ -57,6 +58,7 @@ const useGitLabData = () => {
     };
 
     const fetchMicroservices = async (inputValue) => {
+        console.log("🚀osos ~ fetchMicroservices ~ inputValue:", inputValue)
         if (!selectedGroup || !selectedGroup.value) return [];
 
         const accessToken = localStorage.getItem('accessToken');
@@ -64,12 +66,15 @@ const useGitLabData = () => {
         const headers = { 'PRIVATE-TOKEN': accessToken };
 
         try {
-            const response = await fetch(`${gitlabApi}/groups/${selectedGroup.value}/projects?search=${inputValue}`, { headers });
+            const response = await fetch(`${gitlabApi}/groups/${inputValue.value}/projects`, { headers });
             const data = await response.json();
-            const microservices = data.map(project => ({ label: project.name, value: project.id }));
+            console.log("🚀 ~ fetchMicroservices ~ response:", response)
+            const microservices = data?.map(project => ({ label: project.name, value: project.id }));
             console.log("🚀 ~ fetchMicroservices ~ microservices:", microservices)
 
-            return microservices;
+            // return microservices;
+            setMicroservices(microservices)
+           
         } catch (error) {
             console.error('Error fetching microservices:', error);
             return [];
@@ -84,12 +89,12 @@ const useGitLabData = () => {
         const headers = { 'PRIVATE-TOKEN': accessToken };
 
         try {
-            const response = await fetch(`${gitlabApi}/projects/${selectedMicroservice.value}/repository/branches?search=${inputValue}`, { headers });
+            const response = await fetch(`${gitlabApi}/projects/${selectedMicroservice.value}/repository/branches`, { headers });
             const data = await response.json();
             const branches = data.map(branch => ({ label: branch.name, value: branch.name }));
             console.log("🚀 ~ fetchBranches ~ branches:", branches)
-
-            return branches;
+            setBranches(branches)
+            
         } catch (error) {
             console.error('Error fetching branches:', error);
             return [];
@@ -102,7 +107,9 @@ const useGitLabData = () => {
         selectedBranch, setSelectedBranch,
         gitlabLink, setGitlabLink,
         hasToken, setHasToken,
-        fetchGroups, fetchMicroservices, fetchBranches
+        fetchGroups, fetchMicroservices, fetchBranches,
+        microservices,
+        branches
     };
 };
 
