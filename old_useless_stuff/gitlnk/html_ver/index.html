@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GitLab CI Editor Link Generator</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-xl font-bold mb-4 text-gray-900">GitLab CI Editor Link Generator</h1>
+        <form id="gitlab-form">
+            <div class="mb-4">
+                <label for="base-url" class="block text-sm font-medium text-gray-700">GitLab Base URL:</label>
+                <input type="text" id="base-url" name="base-url" value="https://gitlab.com/" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+                <label for="group" class="block text-sm font-medium text-gray-700">Group:</label>
+                <input type="text" id="group" name="group" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+                <label for="microservice" class="block text-sm font-medium text-gray-700">Microservice:</label>
+                <input type="text" id="microservice" name="microservice" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+                <label for="branch" class="block text-sm font-medium text-gray-700">Branch:</label>
+                <input type="text" id="branch" name="branch" required
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <button type="submit"
+                class="w-full bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+                Open CI Editor
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('gitlab-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const baseUrl = document.getElementById('base-url').value;
+            const group = document.getElementById('group').value;
+            const microservice = document.getElementById('microservice').value;
+            const branch = document.getElementById('branch').value;
+            const ciEditorUrl = `${baseUrl}${group}/${microservice}/-/ci/editor?branch_name=${branch}`;
+            window.open(ciEditorUrl, '_blank');
+        });
+    </script>
+</body>
+
+</html>
