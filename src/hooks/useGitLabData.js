@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export const normalizeGitlabLink = (link) => {
     return link.endsWith('/') ? link.slice(0, -1) : link;
@@ -15,22 +15,20 @@ const useGitLabData = () => {
     const [microservices, setMicroservices] = useState([]);
     const [branches, setBranches] = useState([]);
     useEffect(() => {
-        const storedGitlabLink = localStorage.getItem('gitlabLink');
-        if (storedGitlabLink) {
-            setGitlabLink(normalizeGitlabLink(storedGitlabLink));
+        // const storedGitlabLink = localStorage.getItem('gitlabLink');
+        // if (storedGitlabLink) {
+        //     setGitlabLink(normalizeGitlabLink(storedGitlabLink));
+        // }
+        // Load access token and GitLab link from local storage if available
+        const storedToken = localStorage.getItem('accessToken');
+        const storedOtherGitlabLink = localStorage.getItem('gitlabLink');
+        if (storedToken && storedOtherGitlabLink) {
+            setGitlabLink(normalizeGitlabLink(storedOtherGitlabLink));
+            setHasToken(true);
         }
         fetchGroups();
     }, []);
 
-    useEffect(() => {
-        // Load access token and GitLab link from local storage if available
-        const storedToken = localStorage.getItem('accessToken');
-        const storedGitlabLink = localStorage.getItem('gitlabLink');
-        if (storedToken && storedGitlabLink) {
-            setGitlabLink(normalizeGitlabLink(storedGitlabLink));
-            setHasToken(true);
-        }
-    }, []);
 
     // create a use effect for selected group
     useEffect(() => {
@@ -42,7 +40,7 @@ const useGitLabData = () => {
         }
     }, [selectedGroup, selectedMicroservice])
 
-    const fetchGroups = async (inputValue) => {
+    const fetchGroups = useCallback(async () => {
         const accessToken = localStorage.getItem('accessToken');
         const gitlabApi = `${gitlabLink}/api/v4`;
         const headers = { 'PRIVATE-TOKEN': accessToken };
@@ -53,12 +51,11 @@ const useGitLabData = () => {
             const groups = data.map(group => ({ label: group.name, value: group.id }));
             console.log("🚀 ~ fetchGroups ~ groups:", groups)
 
-            setGroups(groups);
+            setGroups(()=>groups);
         } catch (error) {
             console.error('Error fetching groups:', error);
-            return [];
         }
-    };
+    }, [gitlabLink]);
 
     const fetchMicroservices = async (inputValue) => {
         console.log("🚀osos ~ fetchMicroservices ~ inputValue:", inputValue)
