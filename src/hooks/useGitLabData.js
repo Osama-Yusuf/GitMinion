@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 
 export const normalizeGitlabLink = (link) => {
@@ -37,7 +38,7 @@ const useGitLabData = () => {
         if (selectedMicroservice) {
             fetchBranches('');
         }
-    },[ selectedGroup, selectedMicroservice])
+    }, [selectedGroup, selectedMicroservice])
 
     const fetchGroups = async (inputValue) => {
         const accessToken = localStorage.getItem('accessToken');
@@ -74,7 +75,7 @@ const useGitLabData = () => {
 
             // return microservices;
             setMicroservices(microservices)
-           
+
         } catch (error) {
             console.error('Error fetching microservices:', error);
             return [];
@@ -94,7 +95,7 @@ const useGitLabData = () => {
             const branches = data.map(branch => ({ label: branch.name, value: branch.name }));
             console.log("🚀 ~ fetchBranches ~ branches:", branches)
             setBranches(branches)
-            
+
         } catch (error) {
             console.error('Error fetching branches:', error);
             return [];
