@@ -42,7 +42,7 @@ function SettingsPage() {
                         id="accessToken"
                         type="text"
                         placeholder="Token"
-                        value={storedToken}
+                        value={accessToken}
                         onChange={(e) => setAccessToken(e.target.value)}
                     />
                 </div>
