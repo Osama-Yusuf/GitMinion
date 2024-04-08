@@ -28,6 +28,16 @@ const useGitLabData = () => {
         }
     }, []);
 
+    // create a use effect for selected group
+    useEffect(() => {
+        if (selectedGroup) {
+            fetchMicroservices('');
+        }
+        if (selectedMicroservice) {
+            fetchBranches('');
+        }
+    })
+
     const fetchGroups = async (inputValue) => {
         const accessToken = localStorage.getItem('accessToken');
         const gitlabApi = `${gitlabLink}/api/v4`;
