@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLink, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 
 function HomePage() {
     const navigate = useNavigate();
@@ -31,13 +33,13 @@ function HomePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Feature 1 */}
                     <div className="bg-white p-6 rounded-lg shadow-lg">
-                        <h2 className="text-xl font-bold text-gray-800 mb-2">Trigger Pipelines with Ease</h2>
+                        <h2 className="text-xl font-bold text-gray-800 mb-2"><FontAwesomeIcon className='mr-2' icon={faPersonRunning} />Trigger Pipelines with Ease</h2>
                         <p className="text-gray-600">Quickly run your GitLab pipelines directly from GitMinion, saving time and reducing manual errors.</p>
                     </div>
 
                     {/* Feature 2 */}
                     <div className="bg-white p-6 rounded-lg shadow-lg">
-                        <h2 className="text-xl font-bold text-gray-800 mb-2">Pipeline Configuration Made Simple</h2>
+                        <h2 className="text-xl font-bold text-gray-800 mb-2"><FontAwesomeIcon className='mr-2' icon={faLink} />Open CI/CD Pipeline Editor Link</h2>
                         <p className="text-gray-600">Easily generate and open CI/CD pipeline editor pages with pre-filled settings for your projects.</p>
                     </div>
                 </div>

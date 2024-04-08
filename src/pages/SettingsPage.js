@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function SettingsPage() {
-    const storedGitlabLink = localStorage.getItem('gitlabLink');
+    const storedGitlabLink = localStorage.getItem('gitlabLink') || 'https://gitlab.com/';
     const storedToken = localStorage.getItem('accessToken');
     const [gitlabLink, setGitlabLink] = useState(storedGitlabLink || '');
     const [accessToken, setAccessToken] = useState(storedToken || '');

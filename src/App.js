@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import HomePage from './HomePage';
-import SettingsPage from './SettingsPage';
-import RunPage from './RunPage';
-import LinkPage from './LinkPage';
+import HomePage from './pages/HomePage';
+import SettingsPage from './pages/SettingsPage';
+import RunPage from './pages/RunPage';
+import LinkPage from './pages/LinkPage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faGear, faLink, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 
