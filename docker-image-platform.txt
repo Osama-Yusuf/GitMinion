@@ -1,0 +1,9 @@
+# Create a new builder which enables multi-platform builds:
+docker buildx create --name mybuilder --use
+
+# Start up the builder:
+docker buildx inspect --bootstrap
+
+# Build and push the image to Docker Hub (or another registry):
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t osamayusuf/gitminion:dev --push .
+
