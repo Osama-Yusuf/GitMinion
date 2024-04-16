@@ -1,3 +1,4 @@
+# https://ruanbekker.medium.com/how-to-create-arm-based-container-images-with-buildx-fe917d186824
 #!/bin/bash
 
 # Detect the operating system
