@@ -55,7 +55,13 @@ const useGitLabData = () => {
         } catch (error) {
             console.error('Error fetching groups:', error);
         }
+<<<<<<< HEAD
     }, [gitlabLink]);
+=======
+        console.log(`Fetching from URL: ${gitlabApi}/groups?search=${inputValue}`, { headers });
+
+    };
+>>>>>>> bb2a2b3 (sdf)
 
     const fetchMicroservices = async (inputValue) => {
         console.log("🚀osos ~ fetchMicroservices ~ inputValue:", inputValue)
