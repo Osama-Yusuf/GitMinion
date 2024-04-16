@@ -1,3 +1,26 @@
+#!/bin/bash
+
+# Detect the operating system
+OS=$(uname -s)
+
+# Check if the OS is Ubuntu
+if [ "$OS" = "Linux" ]; then
+    # Check if it's actually Ubuntu
+    if grep -qi "ubuntu" /etc/os-release; then
+        echo "Detected Ubuntu OS. Installing docker-buildx..."
+        sudo apt update && sudo apt install -y docker-buildx
+    else
+        echo "This script only supports Ubuntu and macOS."
+    fi
+elif [ "$OS" = "Darwin" ]; then
+    # macOS detected, provide instructions for macOS
+    echo "Detected macOS. You can install docker-buildx using Docker Desktop."
+    echo "Ensure Docker Desktop is installed and then enable Buildx from the Docker Desktop menu."
+else
+    echo "Unsupported operating system."
+fi
+
+
 # Create a new builder which enables multi-platform builds:
 docker buildx create --name mybuilder --use
 
