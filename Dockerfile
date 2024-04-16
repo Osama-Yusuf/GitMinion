@@ -1,11 +1,11 @@
 # Step 1: Build the React application
 FROM node:18 AS build
 WORKDIR /app
-COPY package.json ./
-RUN npm install
+COPY package.json yarn.lock* ./
+RUN yarn install --frozen-lockfile
 COPY . ./
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
 # RUN npm run build
 
 # # Step 2: Serve the application using a server like nginx
