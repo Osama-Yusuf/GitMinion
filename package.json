@@ -1,5 +1,10 @@
 {
-  "name": "gitpip",
+  "name": "gitminion",
+  "author": {
+    "name": "Osama Yusuf",
+    "url": "https://github.com/osama-yusuf",
+    "email": "osama9mohamed5@gmail.com"
+  },
   "version": "0.1.0",
   "proxy": "https://gitlab.com",
   "private": true,
