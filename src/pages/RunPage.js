@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Inputs from '../components/Inputs';
 import useGitLabData from '../hooks/useGitLabData';
 
-
 function RunPage() {
     const {
         selectedGroup, setSelectedGroup,
